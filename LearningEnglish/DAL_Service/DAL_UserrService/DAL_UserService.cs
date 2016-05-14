@@ -72,7 +72,6 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
             return ret;
         }
 
-
         /// <summary>
         /// search user with critical
         /// </summary>
