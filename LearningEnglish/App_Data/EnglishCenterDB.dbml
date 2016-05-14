@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EnglishCenterDB" Class="EnglishCenterDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-V2S8L5K;Initial Catalog=EnglishCenterDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EnglishCenterDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.answer_tbl" Member="answer_tbls">
+    <Type Name="answer_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="answer_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="answer_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="resource_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="examination_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.examination_part_tbl" Member="examination_part_tbls">
+    <Type Name="examination_part_tbl">
+      <Column Name="examination_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="examination_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="part_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="part_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="part_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.examination_question_tbl" Member="examination_question_tbls">
+    <Type Name="examination_question_tbl">
+      <Column Name="examination_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="question_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="examination_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.examination_tbl" Member="examination_tbls">
+    <Type Name="examination_tbl">
+      <Column Name="id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="num_question" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="course" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="course_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="num_part" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.group_tbl" Member="group_tbls">
+    <Type Name="group_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="group_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="group_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.part_tbl" Member="part_tbls">
+    <Type Name="part_tbl">
+      <Column Name="part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="part_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="part_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="part_type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="part_resource" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.question_tbl" Member="question_tbls">
+    <Type Name="question_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="examination_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="examination_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="question_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="question_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="examination_part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="question_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_type" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="num_correct_answer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="total_num_answer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="resource_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.resource_link_tbl" Member="resource_link_tbls">
+    <Type Name="resource_link_tbl">
+      <Column Name="resource_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="location_type" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="url_host_name" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="resource_type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.resource_tbl" Member="resource_tbls">
+    <Type Name="resource_tbl">
+      <Column Name="resource_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="location_type" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="examination_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.role_detail_tbl" Member="role_detail_tbls">
+    <Type Name="role_detail_tbl">
+      <Column Name="role_code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="function_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="function_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.role_tbl" Member="role_tbls">
+    <Type Name="role_tbl">
+      <Column Name="role_code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="role_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.staff_tbl" Member="staff_tbls">
+    <Type Name="staff_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="staff_code" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="is_admin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="group_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fullname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nick_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="country_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="country_code" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="marital_status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="address1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="address2" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="tel1" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="tel2" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="email1" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="email2" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="manager_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="join_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="avatar_path" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="account_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="user_name" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="update_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.topic_tbl" Member="topic_tbls">
+    <Type Name="topic_tbl">
+      <Column Name="topic_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="topic_type" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="topic_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="topic_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="topic_resource" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_answer_question_detail_tbl" Member="user_answer_question_detail_tbls">
+    <Type Name="user_answer_question_detail_tbl">
+      <Column Name="customer_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="answer_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_answer_question_tbl" Member="user_answer_question_tbls">
+    <Type Name="user_answer_question_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="user_id" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="user_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_tbl" Member="user_tbls">
+    <Type Name="user_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_code" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="user_type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="full_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nick_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="country_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="country_code" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="marital_status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="address1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="address2" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="tel1" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="tel2" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="email1" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="email2" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="referral_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="instructor_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="join_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="avatar_path" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="account_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="user_name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="update_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="role_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.examination_topic_tbl" Member="examination_topic_tbls">
+    <Type Name="examination_topic_tbl">
+      <Column Name="topic_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="examination_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="topic_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="topic_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="topic_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="topic_resource_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="topic_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="examination_id" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
