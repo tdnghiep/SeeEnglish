@@ -21,7 +21,6 @@ namespace LearningEnglish.Controllers
 
             dynamic wrap = new System.Dynamic.ExpandoObject();
             wrap.info = examSv.GetExaminationInfoByID("exam_001");
-            wrap.totalRecord = 10;
             return wrap;
         }
     }

@@ -30,6 +30,9 @@ namespace LearningEnglish.App_Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void Insertuser_tbl(user_tbl instance);
+    partial void Updateuser_tbl(user_tbl instance);
+    partial void Deleteuser_tbl(user_tbl instance);
     #endregion
 		
 		public EnglishCenterDBDataContext() : 
@@ -70,6 +73,14 @@ namespace LearningEnglish.App_Data
 			}
 		}
 		
+		public System.Data.Linq.Table<user_tbl> user_tbls
+		{
+			get
+			{
+				return this.GetTable<user_tbl>();
+			}
+		}
+		
 		public System.Data.Linq.Table<examination_part_tbl> examination_part_tbls
 		{
 			get
@@ -99,14 +110,6 @@ namespace LearningEnglish.App_Data
 			get
 			{
 				return this.GetTable<examination_topic_tbl>();
-			}
-		}
-		
-		public System.Data.Linq.Table<user_tbl> user_tbls
-		{
-			get
-			{
-				return this.GetTable<user_tbl>();
 			}
 		}
 		
@@ -410,6 +413,788 @@ namespace LearningEnglish.App_Data
 				{
 					this._delete_flag = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_tbl")]
+	public partial class user_tbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _user_code;
+		
+		private string _user_type;
+		
+		private string _first_name;
+		
+		private string _last_name;
+		
+		private string _full_name;
+		
+		private string _nick_name;
+		
+		private System.Nullable<System.DateTime> _birthday;
+		
+		private string _gender;
+		
+		private string _country_name;
+		
+		private string _country_code;
+		
+		private System.Nullable<byte> _marital_status;
+		
+		private string _address1;
+		
+		private string _address2;
+		
+		private string _tel1;
+		
+		private string _tel2;
+		
+		private string _email1;
+		
+		private string _email2;
+		
+		private string _referral_code;
+		
+		private string _instructor_code;
+		
+		private System.Nullable<System.DateTime> _join_date;
+		
+		private string _avatar_path;
+		
+		private string _status;
+		
+		private string _account_status;
+		
+		private string _user_name;
+		
+		private string _password;
+		
+		private System.Nullable<bool> _active;
+		
+		private string _role_code;
+		
+		private string _create_date;
+		
+		private string _update_date;
+		
+		private System.Nullable<bool> _delete_flag;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onuser_codeChanging(string value);
+    partial void Onuser_codeChanged();
+    partial void Onuser_typeChanging(string value);
+    partial void Onuser_typeChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void Onlast_nameChanging(string value);
+    partial void Onlast_nameChanged();
+    partial void Onfull_nameChanging(string value);
+    partial void Onfull_nameChanged();
+    partial void Onnick_nameChanging(string value);
+    partial void Onnick_nameChanged();
+    partial void OnbirthdayChanging(System.Nullable<System.DateTime> value);
+    partial void OnbirthdayChanged();
+    partial void OngenderChanging(string value);
+    partial void OngenderChanged();
+    partial void Oncountry_nameChanging(string value);
+    partial void Oncountry_nameChanged();
+    partial void Oncountry_codeChanging(string value);
+    partial void Oncountry_codeChanged();
+    partial void Onmarital_statusChanging(System.Nullable<byte> value);
+    partial void Onmarital_statusChanged();
+    partial void Onaddress1Changing(string value);
+    partial void Onaddress1Changed();
+    partial void Onaddress2Changing(string value);
+    partial void Onaddress2Changed();
+    partial void Ontel1Changing(string value);
+    partial void Ontel1Changed();
+    partial void Ontel2Changing(string value);
+    partial void Ontel2Changed();
+    partial void Onemail1Changing(string value);
+    partial void Onemail1Changed();
+    partial void Onemail2Changing(string value);
+    partial void Onemail2Changed();
+    partial void Onreferral_codeChanging(string value);
+    partial void Onreferral_codeChanged();
+    partial void Oninstructor_codeChanging(string value);
+    partial void Oninstructor_codeChanged();
+    partial void Onjoin_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onjoin_dateChanged();
+    partial void Onavatar_pathChanging(string value);
+    partial void Onavatar_pathChanged();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    partial void Onaccount_statusChanging(string value);
+    partial void Onaccount_statusChanged();
+    partial void Onuser_nameChanging(string value);
+    partial void Onuser_nameChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OnactiveChanging(System.Nullable<bool> value);
+    partial void OnactiveChanged();
+    partial void Onrole_codeChanging(string value);
+    partial void Onrole_codeChanged();
+    partial void Oncreate_dateChanging(string value);
+    partial void Oncreate_dateChanged();
+    partial void Onupdate_dateChanging(string value);
+    partial void Onupdate_dateChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
+		public user_tbl()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_code", DbType="NChar(20)")]
+		public string user_code
+		{
+			get
+			{
+				return this._user_code;
+			}
+			set
+			{
+				if ((this._user_code != value))
+				{
+					this.Onuser_codeChanging(value);
+					this.SendPropertyChanging();
+					this._user_code = value;
+					this.SendPropertyChanged("user_code");
+					this.Onuser_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_type", DbType="NChar(10)")]
+		public string user_type
+		{
+			get
+			{
+				return this._user_type;
+			}
+			set
+			{
+				if ((this._user_type != value))
+				{
+					this.Onuser_typeChanging(value);
+					this.SendPropertyChanging();
+					this._user_type = value;
+					this.SendPropertyChanged("user_type");
+					this.Onuser_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="NVarChar(50)")]
+		public string first_name
+		{
+			get
+			{
+				return this._first_name;
+			}
+			set
+			{
+				if ((this._first_name != value))
+				{
+					this.Onfirst_nameChanging(value);
+					this.SendPropertyChanging();
+					this._first_name = value;
+					this.SendPropertyChanged("first_name");
+					this.Onfirst_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="NVarChar(50)")]
+		public string last_name
+		{
+			get
+			{
+				return this._last_name;
+			}
+			set
+			{
+				if ((this._last_name != value))
+				{
+					this.Onlast_nameChanging(value);
+					this.SendPropertyChanging();
+					this._last_name = value;
+					this.SendPropertyChanged("last_name");
+					this.Onlast_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_full_name", DbType="NVarChar(50)")]
+		public string full_name
+		{
+			get
+			{
+				return this._full_name;
+			}
+			set
+			{
+				if ((this._full_name != value))
+				{
+					this.Onfull_nameChanging(value);
+					this.SendPropertyChanging();
+					this._full_name = value;
+					this.SendPropertyChanged("full_name");
+					this.Onfull_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nick_name", DbType="NVarChar(50)")]
+		public string nick_name
+		{
+			get
+			{
+				return this._nick_name;
+			}
+			set
+			{
+				if ((this._nick_name != value))
+				{
+					this.Onnick_nameChanging(value);
+					this.SendPropertyChanging();
+					this._nick_name = value;
+					this.SendPropertyChanged("nick_name");
+					this.Onnick_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_birthday", DbType="DateTime")]
+		public System.Nullable<System.DateTime> birthday
+		{
+			get
+			{
+				return this._birthday;
+			}
+			set
+			{
+				if ((this._birthday != value))
+				{
+					this.OnbirthdayChanging(value);
+					this.SendPropertyChanging();
+					this._birthday = value;
+					this.SendPropertyChanged("birthday");
+					this.OnbirthdayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="NChar(10)")]
+		public string gender
+		{
+			get
+			{
+				return this._gender;
+			}
+			set
+			{
+				if ((this._gender != value))
+				{
+					this.OngenderChanging(value);
+					this.SendPropertyChanging();
+					this._gender = value;
+					this.SendPropertyChanged("gender");
+					this.OngenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country_name", DbType="NVarChar(50)")]
+		public string country_name
+		{
+			get
+			{
+				return this._country_name;
+			}
+			set
+			{
+				if ((this._country_name != value))
+				{
+					this.Oncountry_nameChanging(value);
+					this.SendPropertyChanging();
+					this._country_name = value;
+					this.SendPropertyChanged("country_name");
+					this.Oncountry_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country_code", DbType="NChar(3)")]
+		public string country_code
+		{
+			get
+			{
+				return this._country_code;
+			}
+			set
+			{
+				if ((this._country_code != value))
+				{
+					this.Oncountry_codeChanging(value);
+					this.SendPropertyChanging();
+					this._country_code = value;
+					this.SendPropertyChanged("country_code");
+					this.Oncountry_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_marital_status", DbType="TinyInt")]
+		public System.Nullable<byte> marital_status
+		{
+			get
+			{
+				return this._marital_status;
+			}
+			set
+			{
+				if ((this._marital_status != value))
+				{
+					this.Onmarital_statusChanging(value);
+					this.SendPropertyChanging();
+					this._marital_status = value;
+					this.SendPropertyChanged("marital_status");
+					this.Onmarital_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address1", DbType="NVarChar(500)")]
+		public string address1
+		{
+			get
+			{
+				return this._address1;
+			}
+			set
+			{
+				if ((this._address1 != value))
+				{
+					this.Onaddress1Changing(value);
+					this.SendPropertyChanging();
+					this._address1 = value;
+					this.SendPropertyChanged("address1");
+					this.Onaddress1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address2", DbType="NVarChar(500)")]
+		public string address2
+		{
+			get
+			{
+				return this._address2;
+			}
+			set
+			{
+				if ((this._address2 != value))
+				{
+					this.Onaddress2Changing(value);
+					this.SendPropertyChanging();
+					this._address2 = value;
+					this.SendPropertyChanged("address2");
+					this.Onaddress2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tel1", DbType="NChar(20)")]
+		public string tel1
+		{
+			get
+			{
+				return this._tel1;
+			}
+			set
+			{
+				if ((this._tel1 != value))
+				{
+					this.Ontel1Changing(value);
+					this.SendPropertyChanging();
+					this._tel1 = value;
+					this.SendPropertyChanged("tel1");
+					this.Ontel1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tel2", DbType="NChar(20)")]
+		public string tel2
+		{
+			get
+			{
+				return this._tel2;
+			}
+			set
+			{
+				if ((this._tel2 != value))
+				{
+					this.Ontel2Changing(value);
+					this.SendPropertyChanging();
+					this._tel2 = value;
+					this.SendPropertyChanged("tel2");
+					this.Ontel2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email1", DbType="NChar(50)")]
+		public string email1
+		{
+			get
+			{
+				return this._email1;
+			}
+			set
+			{
+				if ((this._email1 != value))
+				{
+					this.Onemail1Changing(value);
+					this.SendPropertyChanging();
+					this._email1 = value;
+					this.SendPropertyChanged("email1");
+					this.Onemail1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email2", DbType="NChar(50)")]
+		public string email2
+		{
+			get
+			{
+				return this._email2;
+			}
+			set
+			{
+				if ((this._email2 != value))
+				{
+					this.Onemail2Changing(value);
+					this.SendPropertyChanging();
+					this._email2 = value;
+					this.SendPropertyChanged("email2");
+					this.Onemail2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_referral_code", DbType="NChar(20)")]
+		public string referral_code
+		{
+			get
+			{
+				return this._referral_code;
+			}
+			set
+			{
+				if ((this._referral_code != value))
+				{
+					this.Onreferral_codeChanging(value);
+					this.SendPropertyChanging();
+					this._referral_code = value;
+					this.SendPropertyChanged("referral_code");
+					this.Onreferral_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_instructor_code", DbType="NChar(20)")]
+		public string instructor_code
+		{
+			get
+			{
+				return this._instructor_code;
+			}
+			set
+			{
+				if ((this._instructor_code != value))
+				{
+					this.Oninstructor_codeChanging(value);
+					this.SendPropertyChanging();
+					this._instructor_code = value;
+					this.SendPropertyChanged("instructor_code");
+					this.Oninstructor_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_join_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> join_date
+		{
+			get
+			{
+				return this._join_date;
+			}
+			set
+			{
+				if ((this._join_date != value))
+				{
+					this.Onjoin_dateChanging(value);
+					this.SendPropertyChanging();
+					this._join_date = value;
+					this.SendPropertyChanged("join_date");
+					this.Onjoin_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatar_path", DbType="NVarChar(500)")]
+		public string avatar_path
+		{
+			get
+			{
+				return this._avatar_path;
+			}
+			set
+			{
+				if ((this._avatar_path != value))
+				{
+					this.Onavatar_pathChanging(value);
+					this.SendPropertyChanging();
+					this._avatar_path = value;
+					this.SendPropertyChanged("avatar_path");
+					this.Onavatar_pathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_status", DbType="NChar(10)")]
+		public string account_status
+		{
+			get
+			{
+				return this._account_status;
+			}
+			set
+			{
+				if ((this._account_status != value))
+				{
+					this.Onaccount_statusChanging(value);
+					this.SendPropertyChanging();
+					this._account_status = value;
+					this.SendPropertyChanged("account_status");
+					this.Onaccount_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NChar(50)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this.Onuser_nameChanging(value);
+					this.SendPropertyChanging();
+					this._user_name = value;
+					this.SendPropertyChanged("user_name");
+					this.Onuser_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NChar(20)")]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit")]
+		public System.Nullable<bool> active
+		{
+			get
+			{
+				return this._active;
+			}
+			set
+			{
+				if ((this._active != value))
+				{
+					this.OnactiveChanging(value);
+					this.SendPropertyChanging();
+					this._active = value;
+					this.SendPropertyChanged("active");
+					this.OnactiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role_code", DbType="NChar(10)")]
+		public string role_code
+		{
+			get
+			{
+				return this._role_code;
+			}
+			set
+			{
+				if ((this._role_code != value))
+				{
+					this.Onrole_codeChanging(value);
+					this.SendPropertyChanging();
+					this._role_code = value;
+					this.SendPropertyChanged("role_code");
+					this.Onrole_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_create_date", DbType="NChar(50)")]
+		public string create_date
+		{
+			get
+			{
+				return this._create_date;
+			}
+			set
+			{
+				if ((this._create_date != value))
+				{
+					this.Oncreate_dateChanging(value);
+					this.SendPropertyChanging();
+					this._create_date = value;
+					this.SendPropertyChanged("create_date");
+					this.Oncreate_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_update_date", DbType="NChar(50)")]
+		public string update_date
+		{
+			get
+			{
+				return this._update_date;
+			}
+			set
+			{
+				if ((this._update_date != value))
+				{
+					this.Onupdate_dateChanging(value);
+					this.SendPropertyChanging();
+					this._update_date = value;
+					this.SendPropertyChanged("update_date");
+					this.Onupdate_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_delete_flag", DbType="Bit")]
+		public System.Nullable<bool> delete_flag
+		{
+			get
+			{
+				return this._delete_flag;
+			}
+			set
+			{
+				if ((this._delete_flag != value))
+				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
+					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -949,555 +1734,6 @@ namespace LearningEnglish.App_Data
 				if ((this._delete_flag != value))
 				{
 					this._delete_flag = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_tbl")]
-	public partial class user_tbl
-	{
-		
-		private int _id;
-		
-		private string _user_code;
-		
-		private string _user_type;
-		
-		private string _first_name;
-		
-		private string _last_name;
-		
-		private string _full_name;
-		
-		private string _nick_name;
-		
-		private System.Nullable<System.DateTime> _birthday;
-		
-		private string _gender;
-		
-		private string _country_name;
-		
-		private string _country_code;
-		
-		private System.Nullable<byte> _marital_status;
-		
-		private string _address1;
-		
-		private string _address2;
-		
-		private string _tel1;
-		
-		private string _tel2;
-		
-		private string _email1;
-		
-		private string _email2;
-		
-		private string _referral_code;
-		
-		private string _instructor_code;
-		
-		private System.Nullable<System.DateTime> _join_date;
-		
-		private string _avatar_path;
-		
-		private string _status;
-		
-		private string _account_status;
-		
-		private string _user_name;
-		
-		private string _password;
-		
-		private System.Nullable<System.DateTime> _update_date;
-		
-		private bool _delete_flag;
-		
-		private bool _active;
-		
-		private string _role_code;
-		
-		public user_tbl()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this._id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_code", DbType="NChar(20) NOT NULL", CanBeNull=false)]
-		public string user_code
-		{
-			get
-			{
-				return this._user_code;
-			}
-			set
-			{
-				if ((this._user_code != value))
-				{
-					this._user_code = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_type", DbType="NChar(10)")]
-		public string user_type
-		{
-			get
-			{
-				return this._user_type;
-			}
-			set
-			{
-				if ((this._user_type != value))
-				{
-					this._user_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string first_name
-		{
-			get
-			{
-				return this._first_name;
-			}
-			set
-			{
-				if ((this._first_name != value))
-				{
-					this._first_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="NVarChar(50)")]
-		public string last_name
-		{
-			get
-			{
-				return this._last_name;
-			}
-			set
-			{
-				if ((this._last_name != value))
-				{
-					this._last_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_full_name", DbType="NVarChar(50)")]
-		public string full_name
-		{
-			get
-			{
-				return this._full_name;
-			}
-			set
-			{
-				if ((this._full_name != value))
-				{
-					this._full_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nick_name", DbType="NVarChar(50)")]
-		public string nick_name
-		{
-			get
-			{
-				return this._nick_name;
-			}
-			set
-			{
-				if ((this._nick_name != value))
-				{
-					this._nick_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_birthday", DbType="DateTime")]
-		public System.Nullable<System.DateTime> birthday
-		{
-			get
-			{
-				return this._birthday;
-			}
-			set
-			{
-				if ((this._birthday != value))
-				{
-					this._birthday = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="NChar(10)")]
-		public string gender
-		{
-			get
-			{
-				return this._gender;
-			}
-			set
-			{
-				if ((this._gender != value))
-				{
-					this._gender = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country_name", DbType="NVarChar(50)")]
-		public string country_name
-		{
-			get
-			{
-				return this._country_name;
-			}
-			set
-			{
-				if ((this._country_name != value))
-				{
-					this._country_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country_code", DbType="NChar(3)")]
-		public string country_code
-		{
-			get
-			{
-				return this._country_code;
-			}
-			set
-			{
-				if ((this._country_code != value))
-				{
-					this._country_code = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_marital_status", DbType="TinyInt")]
-		public System.Nullable<byte> marital_status
-		{
-			get
-			{
-				return this._marital_status;
-			}
-			set
-			{
-				if ((this._marital_status != value))
-				{
-					this._marital_status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address1", DbType="NVarChar(500)")]
-		public string address1
-		{
-			get
-			{
-				return this._address1;
-			}
-			set
-			{
-				if ((this._address1 != value))
-				{
-					this._address1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address2", DbType="NVarChar(500)")]
-		public string address2
-		{
-			get
-			{
-				return this._address2;
-			}
-			set
-			{
-				if ((this._address2 != value))
-				{
-					this._address2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tel1", DbType="NChar(20)")]
-		public string tel1
-		{
-			get
-			{
-				return this._tel1;
-			}
-			set
-			{
-				if ((this._tel1 != value))
-				{
-					this._tel1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tel2", DbType="NChar(20)")]
-		public string tel2
-		{
-			get
-			{
-				return this._tel2;
-			}
-			set
-			{
-				if ((this._tel2 != value))
-				{
-					this._tel2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email1", DbType="NChar(50)")]
-		public string email1
-		{
-			get
-			{
-				return this._email1;
-			}
-			set
-			{
-				if ((this._email1 != value))
-				{
-					this._email1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email2", DbType="NChar(50)")]
-		public string email2
-		{
-			get
-			{
-				return this._email2;
-			}
-			set
-			{
-				if ((this._email2 != value))
-				{
-					this._email2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_referral_code", DbType="NChar(20)")]
-		public string referral_code
-		{
-			get
-			{
-				return this._referral_code;
-			}
-			set
-			{
-				if ((this._referral_code != value))
-				{
-					this._referral_code = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_instructor_code", DbType="NChar(20)")]
-		public string instructor_code
-		{
-			get
-			{
-				return this._instructor_code;
-			}
-			set
-			{
-				if ((this._instructor_code != value))
-				{
-					this._instructor_code = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_join_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> join_date
-		{
-			get
-			{
-				return this._join_date;
-			}
-			set
-			{
-				if ((this._join_date != value))
-				{
-					this._join_date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatar_path", DbType="NVarChar(500)")]
-		public string avatar_path
-		{
-			get
-			{
-				return this._avatar_path;
-			}
-			set
-			{
-				if ((this._avatar_path != value))
-				{
-					this._avatar_path = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="NChar(10)")]
-		public string status
-		{
-			get
-			{
-				return this._status;
-			}
-			set
-			{
-				if ((this._status != value))
-				{
-					this._status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_status", DbType="NChar(10)")]
-		public string account_status
-		{
-			get
-			{
-				return this._account_status;
-			}
-			set
-			{
-				if ((this._account_status != value))
-				{
-					this._account_status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NChar(50)")]
-		public string user_name
-		{
-			get
-			{
-				return this._user_name;
-			}
-			set
-			{
-				if ((this._user_name != value))
-				{
-					this._user_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NChar(20)")]
-		public string password
-		{
-			get
-			{
-				return this._password;
-			}
-			set
-			{
-				if ((this._password != value))
-				{
-					this._password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_update_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> update_date
-		{
-			get
-			{
-				return this._update_date;
-			}
-			set
-			{
-				if ((this._update_date != value))
-				{
-					this._update_date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_delete_flag", DbType="Bit NOT NULL")]
-		public bool delete_flag
-		{
-			get
-			{
-				return this._delete_flag;
-			}
-			set
-			{
-				if ((this._delete_flag != value))
-				{
-					this._delete_flag = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit NOT NULL")]
-		public bool active
-		{
-			get
-			{
-				return this._active;
-			}
-			set
-			{
-				if ((this._active != value))
-				{
-					this._active = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role_code", DbType="NChar(10)")]
-		public string role_code
-		{
-			get
-			{
-				return this._role_code;
-			}
-			set
-			{
-				if ((this._role_code != value))
-				{
-					this._role_code = value;
 				}
 			}
 		}

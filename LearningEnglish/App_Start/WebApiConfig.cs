@@ -24,6 +24,7 @@ namespace LearningEnglish
             );
             // json output
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
             // cross domaim
             var corsAttr = new EnableCorsAttribute("http://example.com", "*", "*");
             config.EnableCors(corsAttr);

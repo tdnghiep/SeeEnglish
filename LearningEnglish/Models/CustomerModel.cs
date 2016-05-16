@@ -7,5 +7,6 @@ namespace LearningEnglish.Models
 {
     public class CustomerModel
     {
+
     }
 }

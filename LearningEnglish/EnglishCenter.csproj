@@ -146,6 +146,11 @@
     <Compile Include="App_Business\Role\RoleInfo.cs" />
     <Compile Include="App_Business\Topic\TopicInfo.cs" />
     <Compile Include="App_Business\User\UserInfo.cs" />
+    <Compile Include="App_Data\EnglishCenterDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnglishCenterDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="APP_Service\ExaminationService\ExaminationService.cs" />
     <Compile Include="APP_Service\QuestionAndAnswerService\QuestionAndAnswerService.cs" />
     <Compile Include="APP_Service\UserService\userService.cs" />
@@ -168,18 +173,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Constant\Constants.cs" />
+    <Compile Include="App_Business\Constant\Constants.cs" />
     <Compile Include="Controllers\ExaminationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL_Service\DAL_UserrService\DAL_UserService.cs" />
     <Compile Include="DAL_Service\DAL_StaffService\DAL_StaffService.cs" />
-    <Compile Include="App_Data\EnglishCenterDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EnglishCenterDB.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DAL_Service\DAL_QuestionAndAnswerService\DAL_QuestionAndAnswerService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +188,7 @@
     <Compile Include="Models\SearchObject\StaffParams.cs" />
     <Compile Include="Models\SearchObject\UserParams.cs" />
     <Compile Include="Models\StaffModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

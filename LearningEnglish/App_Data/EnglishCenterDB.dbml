@@ -15,6 +15,41 @@
       <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.user_tbl" Member="user_tbls">
+    <Type Name="user_tbl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="user_type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="full_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nick_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="country_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="country_code" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="marital_status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="address1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="address2" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="tel1" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="tel2" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="email1" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="email2" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="referral_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="instructor_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="join_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="avatar_path" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="account_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="user_name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="role_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="update_date" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.examination_part_tbl" Member="examination_part_tbls">
     <Type Name="examination_part_tbl">
       <Column Name="examination_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
@@ -57,40 +92,6 @@
       <Column Name="part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="examination_id" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="delete_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.user_tbl" Member="user_tbls">
-    <Type Name="user_tbl">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_code" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="user_type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="first_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="full_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="nick_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="gender" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="country_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="country_code" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
-      <Column Name="marital_status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="address1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="address2" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="tel1" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="tel2" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="email1" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="email2" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="referral_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="instructor_code" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="join_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="avatar_path" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="account_status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="user_name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="password" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="update_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="delete_flag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="role_code" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.group_tbl" Member="group_tbls">

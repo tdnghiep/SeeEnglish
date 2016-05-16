@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace LearningEnglish.DAL_Service.DAL_UserService
@@ -12,9 +13,11 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
     public class DAL_UserService
     {
         EnglishCenterDBDataContext db ;
+        Mutex mutext_add_new_user = null;
         public DAL_UserService()
         {
             db = new EnglishCenterDBDataContext();
+            
         }
 
         /// <summary>
@@ -181,6 +184,7 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
 
             return ret;
         }
+
         /// <summary>
         /// add new user
         /// </summary>
@@ -191,16 +195,26 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
             bool ret = false;
             try
             {
-                db.user_tbls.InsertOnSubmit(user_info);
-                db.SubmitChanges();
-                ret = true;
+                MyMutex.mutex_add_new_user.WaitOne();
+                // check user name existed
+                if(!IsExistUserName(user_info.user_name))
+                {
+                    db.user_tbls.InsertOnSubmit(user_info);
+                    db.SubmitChanges();
+                    ret = true;
+                }
             }
             catch(Exception ex)
             {
                 ret = false;
             }
+            finally
+            {
+                MyMutex.mutex_add_new_user.ReleaseMutex();
+            }
             return ret;
         }
+
         /// <summary>
         /// delete user by update active field and delete_flag field
         /// </summary>
@@ -225,6 +239,35 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
             catch (Exception ex)
             {
                 ret = false;
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// Check user name is existed before add new user
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public bool IsExistUserName(string userName)
+        {
+            bool ret = false;
+            try
+            {
+                Table<user_tbl> userTbl = db.user_tbls;
+                var query = from t in userTbl
+                            where t.user_name.Equals(userName)
+                            select t;
+                if (query != null)
+                {
+                    if (query.Count() >= 1)
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
             return ret;
         }
