@@ -217,16 +217,20 @@
   </Table>
   <Table Name="dbo.user_answer_question_detail_tbl" Member="user_answer_question_detail_tbls">
     <Type Name="user_answer_question_detail_tbl">
-      <Column Name="customer_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="answer_question_detail_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="answer_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="answer_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="answer_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.user_answer_question_tbl" Member="user_answer_question_tbls">
     <Type Name="user_answer_question_tbl">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="examination_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="user_id" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="user_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="answer_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

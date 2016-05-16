@@ -20,7 +20,7 @@ namespace LearningEnglish.Controllers
             ExaminationService examSv = new ExaminationService();
 
             dynamic wrap = new System.Dynamic.ExpandoObject();
-            wrap.info = examSv.GetExaminationInfoByID("exam_001");
+            wrap = examSv.GetExaminationInfoByID("exam_001");
             return wrap;
         }
     }
