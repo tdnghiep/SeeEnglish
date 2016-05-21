@@ -8,6 +8,7 @@ namespace LearningEnglish.App_Business.Part
 {
     public class PartInfo
     {
+        public String MySelf = "part";
         public String ExaminationID = "";
         public int examination_order = 0;
         public part_tbl partTbl = null;

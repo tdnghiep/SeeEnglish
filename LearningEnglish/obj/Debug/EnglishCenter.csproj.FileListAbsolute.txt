@@ -42,3 +42,47 @@ D:\Working\Web Project\API\LearningEnglish\LearningEnglish\bin\System.Web.WebPag
 D:\Working\Web Project\API\LearningEnglish\LearningEnglish\bin\Antlr3.Runtime.pdb
 D:\Working\Web Project\API\LearningEnglish\LearningEnglish\obj\Debug\LearningEnglish.dll
 D:\Working\Web Project\API\LearningEnglish\LearningEnglish\obj\Debug\LearningEnglish.pdb
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\LearningEnglish.dll.config
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\LearningEnglish.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\LearningEnglish.pdb
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Antlr3.Runtime.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\EntityFramework.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\EntityFramework.SqlServer.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Microsoft.Owin.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Microsoft.Web.Infrastructure.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Newtonsoft.Json.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Owin.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Net.Http.Formatting.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Cors.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Helpers.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.Cors.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.Owin.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.WebHost.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Mvc.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Optimization.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Razor.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.WebPages.Deployment.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.WebPages.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.WebPages.Razor.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\WebGrease.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\EntityFramework.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\EntityFramework.SqlServer.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Microsoft.Owin.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Newtonsoft.Json.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Net.Http.Formatting.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.Cors.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.Owin.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Http.WebHost.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Helpers.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Mvc.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Optimization.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.Razor.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.WebPages.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.WebPages.Deployment.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\System.Web.WebPages.Razor.xml
+E:\GIT\SEE\SeeEnglish\LearningEnglish\bin\Antlr3.Runtime.pdb
+E:\GIT\SEE\SeeEnglish\LearningEnglish\obj\Debug\EnglishCenter.csprojResolveAssemblyReference.cache
+E:\GIT\SEE\SeeEnglish\LearningEnglish\obj\Debug\LearningEnglish.dll
+E:\GIT\SEE\SeeEnglish\LearningEnglish\obj\Debug\LearningEnglish.pdb

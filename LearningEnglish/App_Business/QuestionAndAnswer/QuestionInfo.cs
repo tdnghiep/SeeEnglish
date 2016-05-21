@@ -9,6 +9,7 @@ namespace LearningEnglish.App_Business.QuestionAndAnswer
 {
     public class QuestionInfo
     {
+        public String MySelf = "question";
         public question_tbl question = null;
         public List<AnswerInfo> answers = null;
         public resource_tbl resource = null;

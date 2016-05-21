@@ -30,9 +30,51 @@ namespace LearningEnglish.App_Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void Insertanswer_tbl(answer_tbl instance);
+    partial void Updateanswer_tbl(answer_tbl instance);
+    partial void Deleteanswer_tbl(answer_tbl instance);
     partial void Insertuser_tbl(user_tbl instance);
     partial void Updateuser_tbl(user_tbl instance);
     partial void Deleteuser_tbl(user_tbl instance);
+    partial void Insertexamination_part_tbl(examination_part_tbl instance);
+    partial void Updateexamination_part_tbl(examination_part_tbl instance);
+    partial void Deleteexamination_part_tbl(examination_part_tbl instance);
+    partial void Insertexamination_question_tbl(examination_question_tbl instance);
+    partial void Updateexamination_question_tbl(examination_question_tbl instance);
+    partial void Deleteexamination_question_tbl(examination_question_tbl instance);
+    partial void Insertexamination_tbl(examination_tbl instance);
+    partial void Updateexamination_tbl(examination_tbl instance);
+    partial void Deleteexamination_tbl(examination_tbl instance);
+    partial void Insertexamination_topic_tbl(examination_topic_tbl instance);
+    partial void Updateexamination_topic_tbl(examination_topic_tbl instance);
+    partial void Deleteexamination_topic_tbl(examination_topic_tbl instance);
+    partial void Insertgroup_tbl(group_tbl instance);
+    partial void Updategroup_tbl(group_tbl instance);
+    partial void Deletegroup_tbl(group_tbl instance);
+    partial void Insertguest_tbl(guest_tbl instance);
+    partial void Updateguest_tbl(guest_tbl instance);
+    partial void Deleteguest_tbl(guest_tbl instance);
+    partial void Insertpart_tbl(part_tbl instance);
+    partial void Updatepart_tbl(part_tbl instance);
+    partial void Deletepart_tbl(part_tbl instance);
+    partial void Insertquestion_tbl(question_tbl instance);
+    partial void Updatequestion_tbl(question_tbl instance);
+    partial void Deletequestion_tbl(question_tbl instance);
+    partial void Insertresource_link_tbl(resource_link_tbl instance);
+    partial void Updateresource_link_tbl(resource_link_tbl instance);
+    partial void Deleteresource_link_tbl(resource_link_tbl instance);
+    partial void Insertresource_tbl(resource_tbl instance);
+    partial void Updateresource_tbl(resource_tbl instance);
+    partial void Deleteresource_tbl(resource_tbl instance);
+    partial void Insertrole_tbl(role_tbl instance);
+    partial void Updaterole_tbl(role_tbl instance);
+    partial void Deleterole_tbl(role_tbl instance);
+    partial void Insertstaff_tbl(staff_tbl instance);
+    partial void Updatestaff_tbl(staff_tbl instance);
+    partial void Deletestaff_tbl(staff_tbl instance);
+    partial void Inserttopic_tbl(topic_tbl instance);
+    partial void Updatetopic_tbl(topic_tbl instance);
+    partial void Deletetopic_tbl(topic_tbl instance);
     partial void Insertuser_answer_question_detail_tbl(user_answer_question_detail_tbl instance);
     partial void Updateuser_answer_question_detail_tbl(user_answer_question_detail_tbl instance);
     partial void Deleteuser_answer_question_detail_tbl(user_answer_question_detail_tbl instance);
@@ -217,10 +259,12 @@ namespace LearningEnglish.App_Data
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.answer_tbl")]
-	public partial class answer_tbl
+	public partial class answer_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private System.Nullable<int> _id;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
 		
 		private string _answer_id;
 		
@@ -234,20 +278,45 @@ namespace LearningEnglish.App_Data
 		
 		private string _resource_id;
 		
-		private System.Nullable<int> _examination_order;
-		
 		private System.Nullable<bool> _is_correct;
 		
 		private string _notes;
 		
 		private System.Nullable<bool> _delete_flag;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onanswer_idChanging(string value);
+    partial void Onanswer_idChanged();
+    partial void Onanswer_orderChanging(System.Nullable<int> value);
+    partial void Onanswer_orderChanged();
+    partial void Onquestion_idChanging(string value);
+    partial void Onquestion_idChanged();
+    partial void Onanswer_contentChanging(string value);
+    partial void Onanswer_contentChanged();
+    partial void Onanswer_titleChanging(string value);
+    partial void Onanswer_titleChanged();
+    partial void Onresource_idChanging(string value);
+    partial void Onresource_idChanged();
+    partial void Onis_correctChanging(System.Nullable<bool> value);
+    partial void Onis_correctChanged();
+    partial void OnnotesChanging(string value);
+    partial void OnnotesChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
 		public answer_tbl()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int")]
-		public System.Nullable<int> id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
@@ -257,7 +326,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -273,7 +346,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._answer_id != value))
 				{
+					this.Onanswer_idChanging(value);
+					this.SendPropertyChanging();
 					this._answer_id = value;
+					this.SendPropertyChanged("answer_id");
+					this.Onanswer_idChanged();
 				}
 			}
 		}
@@ -289,7 +366,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._answer_order != value))
 				{
+					this.Onanswer_orderChanging(value);
+					this.SendPropertyChanging();
 					this._answer_order = value;
+					this.SendPropertyChanged("answer_order");
+					this.Onanswer_orderChanged();
 				}
 			}
 		}
@@ -305,7 +386,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._question_id != value))
 				{
+					this.Onquestion_idChanging(value);
+					this.SendPropertyChanging();
 					this._question_id = value;
+					this.SendPropertyChanged("question_id");
+					this.Onquestion_idChanged();
 				}
 			}
 		}
@@ -321,7 +406,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._answer_content != value))
 				{
+					this.Onanswer_contentChanging(value);
+					this.SendPropertyChanging();
 					this._answer_content = value;
+					this.SendPropertyChanged("answer_content");
+					this.Onanswer_contentChanged();
 				}
 			}
 		}
@@ -337,7 +426,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._answer_title != value))
 				{
+					this.Onanswer_titleChanging(value);
+					this.SendPropertyChanging();
 					this._answer_title = value;
+					this.SendPropertyChanged("answer_title");
+					this.Onanswer_titleChanged();
 				}
 			}
 		}
@@ -353,23 +446,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._resource_id != value))
 				{
+					this.Onresource_idChanging(value);
+					this.SendPropertyChanging();
 					this._resource_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_order", DbType="Int")]
-		public System.Nullable<int> examination_order
-		{
-			get
-			{
-				return this._examination_order;
-			}
-			set
-			{
-				if ((this._examination_order != value))
-				{
-					this._examination_order = value;
+					this.SendPropertyChanged("resource_id");
+					this.Onresource_idChanged();
 				}
 			}
 		}
@@ -385,7 +466,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._is_correct != value))
 				{
+					this.Onis_correctChanging(value);
+					this.SendPropertyChanging();
 					this._is_correct = value;
+					this.SendPropertyChanged("is_correct");
+					this.Onis_correctChanged();
 				}
 			}
 		}
@@ -401,7 +486,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._notes != value))
 				{
+					this.OnnotesChanging(value);
+					this.SendPropertyChanging();
 					this._notes = value;
+					this.SendPropertyChanged("notes");
+					this.OnnotesChanged();
 				}
 			}
 		}
@@ -417,8 +506,32 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._delete_flag != value))
 				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
 					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1206,8 +1319,12 @@ namespace LearningEnglish.App_Data
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.examination_part_tbl")]
-	public partial class examination_part_tbl
+	public partial class examination_part_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
 		
 		private string _examination_id;
 		
@@ -1221,8 +1338,49 @@ namespace LearningEnglish.App_Data
 		
 		private string _part_title;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onexamination_idChanging(string value);
+    partial void Onexamination_idChanged();
+    partial void Onexamination_orderChanging(System.Nullable<int> value);
+    partial void Onexamination_orderChanged();
+    partial void Onpart_idChanging(string value);
+    partial void Onpart_idChanged();
+    partial void Onpart_orderChanging(System.Nullable<int> value);
+    partial void Onpart_orderChanged();
+    partial void Onpart_contentChanging(string value);
+    partial void Onpart_contentChanged();
+    partial void Onpart_titleChanging(string value);
+    partial void Onpart_titleChanged();
+    #endregion
+		
 		public examination_part_tbl()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_id", DbType="NChar(50)")]
@@ -1236,7 +1394,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._examination_id != value))
 				{
+					this.Onexamination_idChanging(value);
+					this.SendPropertyChanging();
 					this._examination_id = value;
+					this.SendPropertyChanged("examination_id");
+					this.Onexamination_idChanged();
 				}
 			}
 		}
@@ -1252,7 +1414,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._examination_order != value))
 				{
+					this.Onexamination_orderChanging(value);
+					this.SendPropertyChanging();
 					this._examination_order = value;
+					this.SendPropertyChanged("examination_order");
+					this.Onexamination_orderChanged();
 				}
 			}
 		}
@@ -1268,7 +1434,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_id != value))
 				{
+					this.Onpart_idChanging(value);
+					this.SendPropertyChanging();
 					this._part_id = value;
+					this.SendPropertyChanged("part_id");
+					this.Onpart_idChanged();
 				}
 			}
 		}
@@ -1284,7 +1454,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_order != value))
 				{
+					this.Onpart_orderChanging(value);
+					this.SendPropertyChanging();
 					this._part_order = value;
+					this.SendPropertyChanged("part_order");
+					this.Onpart_orderChanged();
 				}
 			}
 		}
@@ -1300,7 +1474,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_content != value))
 				{
+					this.Onpart_contentChanging(value);
+					this.SendPropertyChanging();
 					this._part_content = value;
+					this.SendPropertyChanged("part_content");
+					this.Onpart_contentChanged();
 				}
 			}
 		}
@@ -1316,15 +1494,41 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_title != value))
 				{
+					this.Onpart_titleChanging(value);
+					this.SendPropertyChanging();
 					this._part_title = value;
+					this.SendPropertyChanged("part_title");
+					this.Onpart_titleChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.examination_question_tbl")]
-	public partial class examination_question_tbl
+	public partial class examination_question_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
@@ -1336,11 +1540,28 @@ namespace LearningEnglish.App_Data
 		
 		private System.Nullable<int> _examination_order;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onexamination_idChanging(string value);
+    partial void Onexamination_idChanged();
+    partial void Onquestion_idChanging(string value);
+    partial void Onquestion_idChanged();
+    partial void Onquestion_codeChanging(string value);
+    partial void Onquestion_codeChanged();
+    partial void Onexamination_orderChanging(System.Nullable<int> value);
+    partial void Onexamination_orderChanged();
+    #endregion
+		
 		public examination_question_tbl()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -1351,7 +1572,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -1367,7 +1592,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._examination_id != value))
 				{
+					this.Onexamination_idChanging(value);
+					this.SendPropertyChanging();
 					this._examination_id = value;
+					this.SendPropertyChanged("examination_id");
+					this.Onexamination_idChanged();
 				}
 			}
 		}
@@ -1383,7 +1612,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._question_id != value))
 				{
+					this.Onquestion_idChanging(value);
+					this.SendPropertyChanging();
 					this._question_id = value;
+					this.SendPropertyChanged("question_id");
+					this.Onquestion_idChanged();
 				}
 			}
 		}
@@ -1399,7 +1632,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._question_code != value))
 				{
+					this.Onquestion_codeChanging(value);
+					this.SendPropertyChanging();
 					this._question_code = value;
+					this.SendPropertyChanged("question_code");
+					this.Onquestion_codeChanged();
 				}
 			}
 		}
@@ -1415,15 +1652,41 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._examination_order != value))
 				{
+					this.Onexamination_orderChanging(value);
+					this.SendPropertyChanging();
 					this._examination_order = value;
+					this.SendPropertyChanged("examination_order");
+					this.Onexamination_orderChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.examination_tbl")]
-	public partial class examination_tbl
+	public partial class examination_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _id;
 		
@@ -1439,11 +1702,32 @@ namespace LearningEnglish.App_Data
 		
 		private System.Nullable<int> _num_part;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(string value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void Onnum_questionChanging(System.Nullable<int> value);
+    partial void Onnum_questionChanged();
+    partial void OntypeChanging(string value);
+    partial void OntypeChanged();
+    partial void OncourseChanging(string value);
+    partial void OncourseChanged();
+    partial void Oncourse_levelChanging(System.Nullable<int> value);
+    partial void Oncourse_levelChanged();
+    partial void Onnum_partChanging(System.Nullable<int> value);
+    partial void Onnum_partChanged();
+    #endregion
+		
 		public examination_tbl()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="NChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="NChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string id
 		{
 			get
@@ -1454,7 +1738,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -1470,7 +1758,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._name != value))
 				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
 					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
 				}
 			}
 		}
@@ -1486,7 +1778,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._num_question != value))
 				{
+					this.Onnum_questionChanging(value);
+					this.SendPropertyChanging();
 					this._num_question = value;
+					this.SendPropertyChanged("num_question");
+					this.Onnum_questionChanged();
 				}
 			}
 		}
@@ -1502,7 +1798,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._type != value))
 				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
 					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
 				}
 			}
 		}
@@ -1518,7 +1818,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._course != value))
 				{
+					this.OncourseChanging(value);
+					this.SendPropertyChanging();
 					this._course = value;
+					this.SendPropertyChanged("course");
+					this.OncourseChanged();
 				}
 			}
 		}
@@ -1534,7 +1838,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._course_level != value))
 				{
+					this.Oncourse_levelChanging(value);
+					this.SendPropertyChanging();
 					this._course_level = value;
+					this.SendPropertyChanged("course_level");
+					this.Oncourse_levelChanged();
 				}
 			}
 		}
@@ -1550,29 +1858,49 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._num_part != value))
 				{
+					this.Onnum_partChanging(value);
+					this.SendPropertyChanging();
 					this._num_part = value;
+					this.SendPropertyChanged("num_part");
+					this.Onnum_partChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.examination_topic_tbl")]
-	public partial class examination_topic_tbl
+	public partial class examination_topic_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
 		
 		private string _topic_id;
 		
 		private System.Nullable<int> _examination_order;
 		
-		private System.Nullable<int> _topic_type;
-		
-		private string _topic_title;
-		
-		private string _topic_content;
-		
 		private string _topic_resource_id;
-		
-		private System.Nullable<int> _topic_order;
 		
 		private string _part_id;
 		
@@ -1580,8 +1908,49 @@ namespace LearningEnglish.App_Data
 		
 		private System.Nullable<bool> _delete_flag;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Ontopic_idChanging(string value);
+    partial void Ontopic_idChanged();
+    partial void Onexamination_orderChanging(System.Nullable<int> value);
+    partial void Onexamination_orderChanged();
+    partial void Ontopic_resource_idChanging(string value);
+    partial void Ontopic_resource_idChanged();
+    partial void Onpart_idChanging(string value);
+    partial void Onpart_idChanged();
+    partial void Onexamination_idChanging(string value);
+    partial void Onexamination_idChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
 		public examination_topic_tbl()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_topic_id", DbType="NChar(50)")]
@@ -1595,7 +1964,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_id != value))
 				{
+					this.Ontopic_idChanging(value);
+					this.SendPropertyChanging();
 					this._topic_id = value;
+					this.SendPropertyChanged("topic_id");
+					this.Ontopic_idChanged();
 				}
 			}
 		}
@@ -1611,55 +1984,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._examination_order != value))
 				{
+					this.Onexamination_orderChanging(value);
+					this.SendPropertyChanging();
 					this._examination_order = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_topic_type", DbType="Int")]
-		public System.Nullable<int> topic_type
-		{
-			get
-			{
-				return this._topic_type;
-			}
-			set
-			{
-				if ((this._topic_type != value))
-				{
-					this._topic_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_topic_title", DbType="NVarChar(MAX)")]
-		public string topic_title
-		{
-			get
-			{
-				return this._topic_title;
-			}
-			set
-			{
-				if ((this._topic_title != value))
-				{
-					this._topic_title = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_topic_content", DbType="NVarChar(MAX)")]
-		public string topic_content
-		{
-			get
-			{
-				return this._topic_content;
-			}
-			set
-			{
-				if ((this._topic_content != value))
-				{
-					this._topic_content = value;
+					this.SendPropertyChanged("examination_order");
+					this.Onexamination_orderChanged();
 				}
 			}
 		}
@@ -1675,23 +2004,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_resource_id != value))
 				{
+					this.Ontopic_resource_idChanging(value);
+					this.SendPropertyChanging();
 					this._topic_resource_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_topic_order", DbType="Int")]
-		public System.Nullable<int> topic_order
-		{
-			get
-			{
-				return this._topic_order;
-			}
-			set
-			{
-				if ((this._topic_order != value))
-				{
-					this._topic_order = value;
+					this.SendPropertyChanged("topic_resource_id");
+					this.Ontopic_resource_idChanged();
 				}
 			}
 		}
@@ -1707,7 +2024,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_id != value))
 				{
+					this.Onpart_idChanging(value);
+					this.SendPropertyChanging();
 					this._part_id = value;
+					this.SendPropertyChanged("part_id");
+					this.Onpart_idChanged();
 				}
 			}
 		}
@@ -1723,7 +2044,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._examination_id != value))
 				{
+					this.Onexamination_idChanging(value);
+					this.SendPropertyChanging();
 					this._examination_id = value;
+					this.SendPropertyChanged("examination_id");
+					this.Onexamination_idChanged();
 				}
 			}
 		}
@@ -1739,15 +2064,41 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._delete_flag != value))
 				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
 					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.group_tbl")]
-	public partial class group_tbl
+	public partial class group_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
@@ -1755,11 +2106,24 @@ namespace LearningEnglish.App_Data
 		
 		private string _group_name;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Ongroup_codeChanging(string value);
+    partial void Ongroup_codeChanged();
+    partial void Ongroup_nameChanging(string value);
+    partial void Ongroup_nameChanged();
+    #endregion
+		
 		public group_tbl()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -1770,7 +2134,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -1786,7 +2154,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._group_code != value))
 				{
+					this.Ongroup_codeChanging(value);
+					this.SendPropertyChanging();
 					this._group_code = value;
+					this.SendPropertyChanged("group_code");
+					this.Ongroup_codeChanged();
 				}
 			}
 		}
@@ -1802,15 +2174,41 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._group_name != value))
 				{
+					this.Ongroup_nameChanging(value);
+					this.SendPropertyChanging();
 					this._group_name = value;
+					this.SendPropertyChanged("group_name");
+					this.Ongroup_nameChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.guest_tbl")]
-	public partial class guest_tbl
+	public partial class guest_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
@@ -1824,11 +2222,30 @@ namespace LearningEnglish.App_Data
 		
 		private string _notes;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onfull_nameChanging(string value);
+    partial void Onfull_nameChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void Onphone_numberChanging(string value);
+    partial void Onphone_numberChanged();
+    partial void Onsent_filesChanging(string value);
+    partial void Onsent_filesChanged();
+    partial void OnnotesChanging(string value);
+    partial void OnnotesChanged();
+    #endregion
+		
 		public guest_tbl()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -1839,7 +2256,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -1855,7 +2276,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._full_name != value))
 				{
+					this.Onfull_nameChanging(value);
+					this.SendPropertyChanging();
 					this._full_name = value;
+					this.SendPropertyChanged("full_name");
+					this.Onfull_nameChanged();
 				}
 			}
 		}
@@ -1871,7 +2296,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._email != value))
 				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
 					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
 				}
 			}
 		}
@@ -1887,7 +2316,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._phone_number != value))
 				{
+					this.Onphone_numberChanging(value);
+					this.SendPropertyChanging();
 					this._phone_number = value;
+					this.SendPropertyChanged("phone_number");
+					this.Onphone_numberChanged();
 				}
 			}
 		}
@@ -1903,7 +2336,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._sent_files != value))
 				{
+					this.Onsent_filesChanging(value);
+					this.SendPropertyChanging();
 					this._sent_files = value;
+					this.SendPropertyChanged("sent_files");
+					this.Onsent_filesChanged();
 				}
 			}
 		}
@@ -1919,15 +2356,43 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._notes != value))
 				{
+					this.OnnotesChanging(value);
+					this.SendPropertyChanging();
 					this._notes = value;
+					this.SendPropertyChanged("notes");
+					this.OnnotesChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.part_tbl")]
-	public partial class part_tbl
+	public partial class part_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
 		
 		private string _part_id;
 		
@@ -1941,8 +2406,49 @@ namespace LearningEnglish.App_Data
 		
 		private System.Nullable<bool> _delete_flag;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onpart_idChanging(string value);
+    partial void Onpart_idChanged();
+    partial void Onpart_titleChanging(string value);
+    partial void Onpart_titleChanged();
+    partial void Onpart_contentChanging(string value);
+    partial void Onpart_contentChanged();
+    partial void Onpart_typeChanging(string value);
+    partial void Onpart_typeChanged();
+    partial void Onpart_resourceChanging(string value);
+    partial void Onpart_resourceChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
 		public part_tbl()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_part_id", DbType="NChar(50)")]
@@ -1956,7 +2462,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_id != value))
 				{
+					this.Onpart_idChanging(value);
+					this.SendPropertyChanging();
 					this._part_id = value;
+					this.SendPropertyChanged("part_id");
+					this.Onpart_idChanged();
 				}
 			}
 		}
@@ -1972,7 +2482,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_title != value))
 				{
+					this.Onpart_titleChanging(value);
+					this.SendPropertyChanging();
 					this._part_title = value;
+					this.SendPropertyChanged("part_title");
+					this.Onpart_titleChanged();
 				}
 			}
 		}
@@ -1988,7 +2502,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_content != value))
 				{
+					this.Onpart_contentChanging(value);
+					this.SendPropertyChanging();
 					this._part_content = value;
+					this.SendPropertyChanged("part_content");
+					this.Onpart_contentChanged();
 				}
 			}
 		}
@@ -2004,7 +2522,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_type != value))
 				{
+					this.Onpart_typeChanging(value);
+					this.SendPropertyChanging();
 					this._part_type = value;
+					this.SendPropertyChanged("part_type");
+					this.Onpart_typeChanged();
 				}
 			}
 		}
@@ -2020,7 +2542,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._part_resource != value))
 				{
+					this.Onpart_resourceChanging(value);
+					this.SendPropertyChanging();
 					this._part_resource = value;
+					this.SendPropertyChanged("part_resource");
+					this.Onpart_resourceChanged();
 				}
 			}
 		}
@@ -2036,25 +2562,49 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._delete_flag != value))
 				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
 					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.question_tbl")]
-	public partial class question_tbl
+	public partial class question_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private int _id;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private System.Nullable<int> _examination_order;
+		private int _id;
 		
 		private string _examination_id;
 		
 		private string _question_id;
 		
-		private string _question_name;
+		private string _question_title;
 		
 		private string _question_content;
 		
@@ -2074,7 +2624,749 @@ namespace LearningEnglish.App_Data
 		
 		private string _question_code;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onexamination_idChanging(string value);
+    partial void Onexamination_idChanged();
+    partial void Onquestion_idChanging(string value);
+    partial void Onquestion_idChanged();
+    partial void Onquestion_titleChanging(string value);
+    partial void Onquestion_titleChanged();
+    partial void Onquestion_contentChanging(string value);
+    partial void Onquestion_contentChanged();
+    partial void Onexamination_part_idChanging(string value);
+    partial void Onexamination_part_idChanged();
+    partial void Onquestion_orderChanging(System.Nullable<int> value);
+    partial void Onquestion_orderChanged();
+    partial void Onquestion_typeChanging(string value);
+    partial void Onquestion_typeChanged();
+    partial void Onnum_correct_answerChanging(System.Nullable<int> value);
+    partial void Onnum_correct_answerChanged();
+    partial void Ontotal_num_answerChanging(System.Nullable<int> value);
+    partial void Ontotal_num_answerChanged();
+    partial void Onresource_idChanging(string value);
+    partial void Onresource_idChanged();
+    partial void OnnotesChanging(string value);
+    partial void OnnotesChanged();
+    partial void Onquestion_codeChanging(string value);
+    partial void Onquestion_codeChanged();
+    #endregion
+		
 		public question_tbl()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_id", DbType="NChar(50)")]
+		public string examination_id
+		{
+			get
+			{
+				return this._examination_id;
+			}
+			set
+			{
+				if ((this._examination_id != value))
+				{
+					this.Onexamination_idChanging(value);
+					this.SendPropertyChanging();
+					this._examination_id = value;
+					this.SendPropertyChanged("examination_id");
+					this.Onexamination_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_id", DbType="NChar(50)")]
+		public string question_id
+		{
+			get
+			{
+				return this._question_id;
+			}
+			set
+			{
+				if ((this._question_id != value))
+				{
+					this.Onquestion_idChanging(value);
+					this.SendPropertyChanging();
+					this._question_id = value;
+					this.SendPropertyChanged("question_id");
+					this.Onquestion_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_title", DbType="NVarChar(50)")]
+		public string question_title
+		{
+			get
+			{
+				return this._question_title;
+			}
+			set
+			{
+				if ((this._question_title != value))
+				{
+					this.Onquestion_titleChanging(value);
+					this.SendPropertyChanging();
+					this._question_title = value;
+					this.SendPropertyChanged("question_title");
+					this.Onquestion_titleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_content", DbType="NVarChar(MAX)")]
+		public string question_content
+		{
+			get
+			{
+				return this._question_content;
+			}
+			set
+			{
+				if ((this._question_content != value))
+				{
+					this.Onquestion_contentChanging(value);
+					this.SendPropertyChanging();
+					this._question_content = value;
+					this.SendPropertyChanged("question_content");
+					this.Onquestion_contentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_part_id", DbType="NChar(50)")]
+		public string examination_part_id
+		{
+			get
+			{
+				return this._examination_part_id;
+			}
+			set
+			{
+				if ((this._examination_part_id != value))
+				{
+					this.Onexamination_part_idChanging(value);
+					this.SendPropertyChanging();
+					this._examination_part_id = value;
+					this.SendPropertyChanged("examination_part_id");
+					this.Onexamination_part_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_order", DbType="Int")]
+		public System.Nullable<int> question_order
+		{
+			get
+			{
+				return this._question_order;
+			}
+			set
+			{
+				if ((this._question_order != value))
+				{
+					this.Onquestion_orderChanging(value);
+					this.SendPropertyChanging();
+					this._question_order = value;
+					this.SendPropertyChanged("question_order");
+					this.Onquestion_orderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_type", DbType="NChar(50)")]
+		public string question_type
+		{
+			get
+			{
+				return this._question_type;
+			}
+			set
+			{
+				if ((this._question_type != value))
+				{
+					this.Onquestion_typeChanging(value);
+					this.SendPropertyChanging();
+					this._question_type = value;
+					this.SendPropertyChanged("question_type");
+					this.Onquestion_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_num_correct_answer", DbType="Int")]
+		public System.Nullable<int> num_correct_answer
+		{
+			get
+			{
+				return this._num_correct_answer;
+			}
+			set
+			{
+				if ((this._num_correct_answer != value))
+				{
+					this.Onnum_correct_answerChanging(value);
+					this.SendPropertyChanging();
+					this._num_correct_answer = value;
+					this.SendPropertyChanged("num_correct_answer");
+					this.Onnum_correct_answerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_num_answer", DbType="Int")]
+		public System.Nullable<int> total_num_answer
+		{
+			get
+			{
+				return this._total_num_answer;
+			}
+			set
+			{
+				if ((this._total_num_answer != value))
+				{
+					this.Ontotal_num_answerChanging(value);
+					this.SendPropertyChanging();
+					this._total_num_answer = value;
+					this.SendPropertyChanged("total_num_answer");
+					this.Ontotal_num_answerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_id", DbType="NChar(50)")]
+		public string resource_id
+		{
+			get
+			{
+				return this._resource_id;
+			}
+			set
+			{
+				if ((this._resource_id != value))
+				{
+					this.Onresource_idChanging(value);
+					this.SendPropertyChanging();
+					this._resource_id = value;
+					this.SendPropertyChanged("resource_id");
+					this.Onresource_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notes", DbType="NVarChar(MAX)")]
+		public string notes
+		{
+			get
+			{
+				return this._notes;
+			}
+			set
+			{
+				if ((this._notes != value))
+				{
+					this.OnnotesChanging(value);
+					this.SendPropertyChanging();
+					this._notes = value;
+					this.SendPropertyChanged("notes");
+					this.OnnotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_code", DbType="NChar(10)")]
+		public string question_code
+		{
+			get
+			{
+				return this._question_code;
+			}
+			set
+			{
+				if ((this._question_code != value))
+				{
+					this.Onquestion_codeChanging(value);
+					this.SendPropertyChanging();
+					this._question_code = value;
+					this.SendPropertyChanged("question_code");
+					this.Onquestion_codeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.resource_link_tbl")]
+	public partial class resource_link_tbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _resource_id;
+		
+		private System.Nullable<bool> _active;
+		
+		private string _url;
+		
+		private System.Nullable<byte> _location_type;
+		
+		private string _url_host_name;
+		
+		private string _resource_type;
+		
+		private System.Nullable<bool> _delete_flag;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onresource_idChanging(string value);
+    partial void Onresource_idChanged();
+    partial void OnactiveChanging(System.Nullable<bool> value);
+    partial void OnactiveChanged();
+    partial void OnurlChanging(string value);
+    partial void OnurlChanged();
+    partial void Onlocation_typeChanging(System.Nullable<byte> value);
+    partial void Onlocation_typeChanged();
+    partial void Onurl_host_nameChanging(string value);
+    partial void Onurl_host_nameChanged();
+    partial void Onresource_typeChanging(string value);
+    partial void Onresource_typeChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
+		public resource_link_tbl()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_id", DbType="NChar(50)")]
+		public string resource_id
+		{
+			get
+			{
+				return this._resource_id;
+			}
+			set
+			{
+				if ((this._resource_id != value))
+				{
+					this.Onresource_idChanging(value);
+					this.SendPropertyChanging();
+					this._resource_id = value;
+					this.SendPropertyChanged("resource_id");
+					this.Onresource_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit")]
+		public System.Nullable<bool> active
+		{
+			get
+			{
+				return this._active;
+			}
+			set
+			{
+				if ((this._active != value))
+				{
+					this.OnactiveChanging(value);
+					this.SendPropertyChanging();
+					this._active = value;
+					this.SendPropertyChanged("active");
+					this.OnactiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="NVarChar(250)")]
+		public string url
+		{
+			get
+			{
+				return this._url;
+			}
+			set
+			{
+				if ((this._url != value))
+				{
+					this.OnurlChanging(value);
+					this.SendPropertyChanging();
+					this._url = value;
+					this.SendPropertyChanged("url");
+					this.OnurlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_type", DbType="TinyInt")]
+		public System.Nullable<byte> location_type
+		{
+			get
+			{
+				return this._location_type;
+			}
+			set
+			{
+				if ((this._location_type != value))
+				{
+					this.Onlocation_typeChanging(value);
+					this.SendPropertyChanging();
+					this._location_type = value;
+					this.SendPropertyChanged("location_type");
+					this.Onlocation_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url_host_name", DbType="NVarChar(150)")]
+		public string url_host_name
+		{
+			get
+			{
+				return this._url_host_name;
+			}
+			set
+			{
+				if ((this._url_host_name != value))
+				{
+					this.Onurl_host_nameChanging(value);
+					this.SendPropertyChanging();
+					this._url_host_name = value;
+					this.SendPropertyChanged("url_host_name");
+					this.Onurl_host_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_type", DbType="NChar(10)")]
+		public string resource_type
+		{
+			get
+			{
+				return this._resource_type;
+			}
+			set
+			{
+				if ((this._resource_type != value))
+				{
+					this.Onresource_typeChanging(value);
+					this.SendPropertyChanging();
+					this._resource_type = value;
+					this.SendPropertyChanged("resource_type");
+					this.Onresource_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_delete_flag", DbType="Bit")]
+		public System.Nullable<bool> delete_flag
+		{
+			get
+			{
+				return this._delete_flag;
+			}
+			set
+			{
+				if ((this._delete_flag != value))
+				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
+					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.resource_tbl")]
+	public partial class resource_tbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _resource_id;
+		
+		private string _name;
+		
+		private string _type;
+		
+		private System.Nullable<byte> _location_type;
+		
+		private System.Nullable<bool> _delete_flag;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onresource_idChanging(string value);
+    partial void Onresource_idChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OntypeChanging(string value);
+    partial void OntypeChanged();
+    partial void Onlocation_typeChanging(System.Nullable<byte> value);
+    partial void Onlocation_typeChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
+		public resource_tbl()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_id", DbType="NChar(50)")]
+		public string resource_id
+		{
+			get
+			{
+				return this._resource_id;
+			}
+			set
+			{
+				if ((this._resource_id != value))
+				{
+					this.Onresource_idChanging(value);
+					this.SendPropertyChanging();
+					this._resource_id = value;
+					this.SendPropertyChanged("resource_id");
+					this.Onresource_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="NChar(10)")]
+		public string type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_type", DbType="TinyInt")]
+		public System.Nullable<byte> location_type
+		{
+			get
+			{
+				return this._location_type;
+			}
+			set
+			{
+				if ((this._location_type != value))
+				{
+					this.Onlocation_typeChanging(value);
+					this.SendPropertyChanging();
+					this._location_type = value;
+					this.SendPropertyChanged("location_type");
+					this.Onlocation_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_delete_flag", DbType="Bit")]
+		public System.Nullable<bool> delete_flag
+		{
+			get
+			{
+				return this._delete_flag;
+			}
+			set
+			{
+				if ((this._delete_flag != value))
+				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
+					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.role_detail_tbl")]
+	public partial class role_detail_tbl
+	{
+		
+		private int _id;
+		
+		private System.Nullable<int> _role_code;
+		
+		private System.Nullable<int> _function_id;
+		
+		private string _function_name;
+		
+		public role_detail_tbl()
 		{
 		}
 		
@@ -2092,481 +3384,6 @@ namespace LearningEnglish.App_Data
 					this._id = value;
 				}
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_order", DbType="Int")]
-		public System.Nullable<int> examination_order
-		{
-			get
-			{
-				return this._examination_order;
-			}
-			set
-			{
-				if ((this._examination_order != value))
-				{
-					this._examination_order = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_id", DbType="NChar(50)")]
-		public string examination_id
-		{
-			get
-			{
-				return this._examination_id;
-			}
-			set
-			{
-				if ((this._examination_id != value))
-				{
-					this._examination_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_id", DbType="NChar(50)")]
-		public string question_id
-		{
-			get
-			{
-				return this._question_id;
-			}
-			set
-			{
-				if ((this._question_id != value))
-				{
-					this._question_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_name", DbType="NVarChar(50)")]
-		public string question_name
-		{
-			get
-			{
-				return this._question_name;
-			}
-			set
-			{
-				if ((this._question_name != value))
-				{
-					this._question_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_content", DbType="NVarChar(MAX)")]
-		public string question_content
-		{
-			get
-			{
-				return this._question_content;
-			}
-			set
-			{
-				if ((this._question_content != value))
-				{
-					this._question_content = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_part_id", DbType="NChar(50)")]
-		public string examination_part_id
-		{
-			get
-			{
-				return this._examination_part_id;
-			}
-			set
-			{
-				if ((this._examination_part_id != value))
-				{
-					this._examination_part_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_order", DbType="Int")]
-		public System.Nullable<int> question_order
-		{
-			get
-			{
-				return this._question_order;
-			}
-			set
-			{
-				if ((this._question_order != value))
-				{
-					this._question_order = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_type", DbType="NChar(50)")]
-		public string question_type
-		{
-			get
-			{
-				return this._question_type;
-			}
-			set
-			{
-				if ((this._question_type != value))
-				{
-					this._question_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_num_correct_answer", DbType="Int")]
-		public System.Nullable<int> num_correct_answer
-		{
-			get
-			{
-				return this._num_correct_answer;
-			}
-			set
-			{
-				if ((this._num_correct_answer != value))
-				{
-					this._num_correct_answer = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_num_answer", DbType="Int")]
-		public System.Nullable<int> total_num_answer
-		{
-			get
-			{
-				return this._total_num_answer;
-			}
-			set
-			{
-				if ((this._total_num_answer != value))
-				{
-					this._total_num_answer = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_id", DbType="NChar(50)")]
-		public string resource_id
-		{
-			get
-			{
-				return this._resource_id;
-			}
-			set
-			{
-				if ((this._resource_id != value))
-				{
-					this._resource_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notes", DbType="NVarChar(MAX)")]
-		public string notes
-		{
-			get
-			{
-				return this._notes;
-			}
-			set
-			{
-				if ((this._notes != value))
-				{
-					this._notes = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_question_code", DbType="NChar(10)")]
-		public string question_code
-		{
-			get
-			{
-				return this._question_code;
-			}
-			set
-			{
-				if ((this._question_code != value))
-				{
-					this._question_code = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.resource_link_tbl")]
-	public partial class resource_link_tbl
-	{
-		
-		private string _resource_id;
-		
-		private System.Nullable<bool> _active;
-		
-		private string _url;
-		
-		private System.Nullable<byte> _location_type;
-		
-		private string _url_host_name;
-		
-		private string _resource_type;
-		
-		private System.Nullable<bool> _delete_flag;
-		
-		public resource_link_tbl()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_id", DbType="NChar(50)")]
-		public string resource_id
-		{
-			get
-			{
-				return this._resource_id;
-			}
-			set
-			{
-				if ((this._resource_id != value))
-				{
-					this._resource_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit")]
-		public System.Nullable<bool> active
-		{
-			get
-			{
-				return this._active;
-			}
-			set
-			{
-				if ((this._active != value))
-				{
-					this._active = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="NVarChar(250)")]
-		public string url
-		{
-			get
-			{
-				return this._url;
-			}
-			set
-			{
-				if ((this._url != value))
-				{
-					this._url = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_type", DbType="TinyInt")]
-		public System.Nullable<byte> location_type
-		{
-			get
-			{
-				return this._location_type;
-			}
-			set
-			{
-				if ((this._location_type != value))
-				{
-					this._location_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url_host_name", DbType="NVarChar(150)")]
-		public string url_host_name
-		{
-			get
-			{
-				return this._url_host_name;
-			}
-			set
-			{
-				if ((this._url_host_name != value))
-				{
-					this._url_host_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_type", DbType="NChar(10)")]
-		public string resource_type
-		{
-			get
-			{
-				return this._resource_type;
-			}
-			set
-			{
-				if ((this._resource_type != value))
-				{
-					this._resource_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_delete_flag", DbType="Bit")]
-		public System.Nullable<bool> delete_flag
-		{
-			get
-			{
-				return this._delete_flag;
-			}
-			set
-			{
-				if ((this._delete_flag != value))
-				{
-					this._delete_flag = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.resource_tbl")]
-	public partial class resource_tbl
-	{
-		
-		private string _resource_id;
-		
-		private string _name;
-		
-		private string _type;
-		
-		private System.Nullable<byte> _location_type;
-		
-		private System.Nullable<int> _examination_order;
-		
-		private System.Nullable<bool> _delete_flag;
-		
-		public resource_tbl()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_id", DbType="NChar(50)")]
-		public string resource_id
-		{
-			get
-			{
-				return this._resource_id;
-			}
-			set
-			{
-				if ((this._resource_id != value))
-				{
-					this._resource_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this._name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="NChar(10)")]
-		public string type
-		{
-			get
-			{
-				return this._type;
-			}
-			set
-			{
-				if ((this._type != value))
-				{
-					this._type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_type", DbType="TinyInt")]
-		public System.Nullable<byte> location_type
-		{
-			get
-			{
-				return this._location_type;
-			}
-			set
-			{
-				if ((this._location_type != value))
-				{
-					this._location_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_order", DbType="Int")]
-		public System.Nullable<int> examination_order
-		{
-			get
-			{
-				return this._examination_order;
-			}
-			set
-			{
-				if ((this._examination_order != value))
-				{
-					this._examination_order = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_delete_flag", DbType="Bit")]
-		public System.Nullable<bool> delete_flag
-		{
-			get
-			{
-				return this._delete_flag;
-			}
-			set
-			{
-				if ((this._delete_flag != value))
-				{
-					this._delete_flag = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.role_detail_tbl")]
-	public partial class role_detail_tbl
-	{
-		
-		private System.Nullable<int> _role_code;
-		
-		private System.Nullable<int> _function_id;
-		
-		private string _function_name;
-		
-		public role_detail_tbl()
-		{
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role_code", DbType="Int")]
@@ -2619,15 +3436,52 @@ namespace LearningEnglish.App_Data
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.role_tbl")]
-	public partial class role_tbl
+	public partial class role_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
 		
 		private System.Nullable<int> _role_code;
 		
 		private string _role_name;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onrole_codeChanging(System.Nullable<int> value);
+    partial void Onrole_codeChanged();
+    partial void Onrole_nameChanging(string value);
+    partial void Onrole_nameChanged();
+    #endregion
+		
 		public role_tbl()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role_code", DbType="Int")]
@@ -2641,7 +3495,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._role_code != value))
 				{
+					this.Onrole_codeChanging(value);
+					this.SendPropertyChanging();
 					this._role_code = value;
+					this.SendPropertyChanged("role_code");
+					this.Onrole_codeChanged();
 				}
 			}
 		}
@@ -2657,15 +3515,41 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._role_name != value))
 				{
+					this.Onrole_nameChanging(value);
+					this.SendPropertyChanging();
 					this._role_name = value;
+					this.SendPropertyChanged("role_name");
+					this.Onrole_nameChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.staff_tbl")]
-	public partial class staff_tbl
+	public partial class staff_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
@@ -2723,11 +3607,74 @@ namespace LearningEnglish.App_Data
 		
 		private System.Nullable<bool> _delete_flag;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onstaff_codeChanging(string value);
+    partial void Onstaff_codeChanged();
+    partial void Onis_adminChanging(System.Nullable<bool> value);
+    partial void Onis_adminChanged();
+    partial void Ongroup_codeChanging(string value);
+    partial void Ongroup_codeChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void Onlast_nameChanging(string value);
+    partial void Onlast_nameChanged();
+    partial void OnfullnameChanging(string value);
+    partial void OnfullnameChanged();
+    partial void Onnick_nameChanging(string value);
+    partial void Onnick_nameChanged();
+    partial void OnbirthdayChanging(System.Nullable<System.DateTime> value);
+    partial void OnbirthdayChanged();
+    partial void OngenderChanging(string value);
+    partial void OngenderChanged();
+    partial void Oncountry_nameChanging(string value);
+    partial void Oncountry_nameChanged();
+    partial void Oncountry_codeChanging(string value);
+    partial void Oncountry_codeChanged();
+    partial void Onmarital_statusChanging(System.Nullable<byte> value);
+    partial void Onmarital_statusChanged();
+    partial void Onaddress1Changing(string value);
+    partial void Onaddress1Changed();
+    partial void Onaddress2Changing(string value);
+    partial void Onaddress2Changed();
+    partial void Ontel1Changing(string value);
+    partial void Ontel1Changed();
+    partial void Ontel2Changing(string value);
+    partial void Ontel2Changed();
+    partial void Onemail1Changing(string value);
+    partial void Onemail1Changed();
+    partial void Onemail2Changing(string value);
+    partial void Onemail2Changed();
+    partial void Onmanager_codeChanging(string value);
+    partial void Onmanager_codeChanged();
+    partial void Onjoin_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onjoin_dateChanged();
+    partial void Onavatar_pathChanging(string value);
+    partial void Onavatar_pathChanged();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    partial void Onaccount_statusChanging(string value);
+    partial void Onaccount_statusChanged();
+    partial void Onuser_nameChanging(string value);
+    partial void Onuser_nameChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void Onupdate_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onupdate_dateChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
 		public staff_tbl()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -2738,7 +3685,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -2754,7 +3705,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._staff_code != value))
 				{
+					this.Onstaff_codeChanging(value);
+					this.SendPropertyChanging();
 					this._staff_code = value;
+					this.SendPropertyChanged("staff_code");
+					this.Onstaff_codeChanged();
 				}
 			}
 		}
@@ -2770,7 +3725,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._is_admin != value))
 				{
+					this.Onis_adminChanging(value);
+					this.SendPropertyChanging();
 					this._is_admin = value;
+					this.SendPropertyChanged("is_admin");
+					this.Onis_adminChanged();
 				}
 			}
 		}
@@ -2786,7 +3745,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._group_code != value))
 				{
+					this.Ongroup_codeChanging(value);
+					this.SendPropertyChanging();
 					this._group_code = value;
+					this.SendPropertyChanged("group_code");
+					this.Ongroup_codeChanged();
 				}
 			}
 		}
@@ -2802,7 +3765,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._first_name != value))
 				{
+					this.Onfirst_nameChanging(value);
+					this.SendPropertyChanging();
 					this._first_name = value;
+					this.SendPropertyChanged("first_name");
+					this.Onfirst_nameChanged();
 				}
 			}
 		}
@@ -2818,7 +3785,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._last_name != value))
 				{
+					this.Onlast_nameChanging(value);
+					this.SendPropertyChanging();
 					this._last_name = value;
+					this.SendPropertyChanged("last_name");
+					this.Onlast_nameChanged();
 				}
 			}
 		}
@@ -2834,7 +3805,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._fullname != value))
 				{
+					this.OnfullnameChanging(value);
+					this.SendPropertyChanging();
 					this._fullname = value;
+					this.SendPropertyChanged("fullname");
+					this.OnfullnameChanged();
 				}
 			}
 		}
@@ -2850,7 +3825,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._nick_name != value))
 				{
+					this.Onnick_nameChanging(value);
+					this.SendPropertyChanging();
 					this._nick_name = value;
+					this.SendPropertyChanged("nick_name");
+					this.Onnick_nameChanged();
 				}
 			}
 		}
@@ -2866,7 +3845,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._birthday != value))
 				{
+					this.OnbirthdayChanging(value);
+					this.SendPropertyChanging();
 					this._birthday = value;
+					this.SendPropertyChanged("birthday");
+					this.OnbirthdayChanged();
 				}
 			}
 		}
@@ -2882,7 +3865,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._gender != value))
 				{
+					this.OngenderChanging(value);
+					this.SendPropertyChanging();
 					this._gender = value;
+					this.SendPropertyChanged("gender");
+					this.OngenderChanged();
 				}
 			}
 		}
@@ -2898,7 +3885,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._country_name != value))
 				{
+					this.Oncountry_nameChanging(value);
+					this.SendPropertyChanging();
 					this._country_name = value;
+					this.SendPropertyChanged("country_name");
+					this.Oncountry_nameChanged();
 				}
 			}
 		}
@@ -2914,7 +3905,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._country_code != value))
 				{
+					this.Oncountry_codeChanging(value);
+					this.SendPropertyChanging();
 					this._country_code = value;
+					this.SendPropertyChanged("country_code");
+					this.Oncountry_codeChanged();
 				}
 			}
 		}
@@ -2930,7 +3925,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._marital_status != value))
 				{
+					this.Onmarital_statusChanging(value);
+					this.SendPropertyChanging();
 					this._marital_status = value;
+					this.SendPropertyChanged("marital_status");
+					this.Onmarital_statusChanged();
 				}
 			}
 		}
@@ -2946,7 +3945,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._address1 != value))
 				{
+					this.Onaddress1Changing(value);
+					this.SendPropertyChanging();
 					this._address1 = value;
+					this.SendPropertyChanged("address1");
+					this.Onaddress1Changed();
 				}
 			}
 		}
@@ -2962,7 +3965,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._address2 != value))
 				{
+					this.Onaddress2Changing(value);
+					this.SendPropertyChanging();
 					this._address2 = value;
+					this.SendPropertyChanged("address2");
+					this.Onaddress2Changed();
 				}
 			}
 		}
@@ -2978,7 +3985,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._tel1 != value))
 				{
+					this.Ontel1Changing(value);
+					this.SendPropertyChanging();
 					this._tel1 = value;
+					this.SendPropertyChanged("tel1");
+					this.Ontel1Changed();
 				}
 			}
 		}
@@ -2994,7 +4005,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._tel2 != value))
 				{
+					this.Ontel2Changing(value);
+					this.SendPropertyChanging();
 					this._tel2 = value;
+					this.SendPropertyChanged("tel2");
+					this.Ontel2Changed();
 				}
 			}
 		}
@@ -3010,7 +4025,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._email1 != value))
 				{
+					this.Onemail1Changing(value);
+					this.SendPropertyChanging();
 					this._email1 = value;
+					this.SendPropertyChanged("email1");
+					this.Onemail1Changed();
 				}
 			}
 		}
@@ -3026,7 +4045,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._email2 != value))
 				{
+					this.Onemail2Changing(value);
+					this.SendPropertyChanging();
 					this._email2 = value;
+					this.SendPropertyChanged("email2");
+					this.Onemail2Changed();
 				}
 			}
 		}
@@ -3042,7 +4065,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._manager_code != value))
 				{
+					this.Onmanager_codeChanging(value);
+					this.SendPropertyChanging();
 					this._manager_code = value;
+					this.SendPropertyChanged("manager_code");
+					this.Onmanager_codeChanged();
 				}
 			}
 		}
@@ -3058,7 +4085,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._join_date != value))
 				{
+					this.Onjoin_dateChanging(value);
+					this.SendPropertyChanging();
 					this._join_date = value;
+					this.SendPropertyChanged("join_date");
+					this.Onjoin_dateChanged();
 				}
 			}
 		}
@@ -3074,7 +4105,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._avatar_path != value))
 				{
+					this.Onavatar_pathChanging(value);
+					this.SendPropertyChanging();
 					this._avatar_path = value;
+					this.SendPropertyChanged("avatar_path");
+					this.Onavatar_pathChanged();
 				}
 			}
 		}
@@ -3090,7 +4125,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._status != value))
 				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
 					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
 				}
 			}
 		}
@@ -3106,7 +4145,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._account_status != value))
 				{
+					this.Onaccount_statusChanging(value);
+					this.SendPropertyChanging();
 					this._account_status = value;
+					this.SendPropertyChanged("account_status");
+					this.Onaccount_statusChanged();
 				}
 			}
 		}
@@ -3122,7 +4165,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._user_name != value))
 				{
+					this.Onuser_nameChanging(value);
+					this.SendPropertyChanging();
 					this._user_name = value;
+					this.SendPropertyChanged("user_name");
+					this.Onuser_nameChanged();
 				}
 			}
 		}
@@ -3138,7 +4185,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._password != value))
 				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
 					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
 				}
 			}
 		}
@@ -3154,7 +4205,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._update_date != value))
 				{
+					this.Onupdate_dateChanging(value);
+					this.SendPropertyChanging();
 					this._update_date = value;
+					this.SendPropertyChanged("update_date");
+					this.Onupdate_dateChanged();
 				}
 			}
 		}
@@ -3170,15 +4225,43 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._delete_flag != value))
 				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
 					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.topic_tbl")]
-	public partial class topic_tbl
+	public partial class topic_tbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
 		
 		private string _topic_id;
 		
@@ -3192,8 +4275,49 @@ namespace LearningEnglish.App_Data
 		
 		private System.Nullable<bool> _delete_flag;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Ontopic_idChanging(string value);
+    partial void Ontopic_idChanged();
+    partial void Ontopic_typeChanging(string value);
+    partial void Ontopic_typeChanged();
+    partial void Ontopic_titleChanging(string value);
+    partial void Ontopic_titleChanged();
+    partial void Ontopic_contentChanging(string value);
+    partial void Ontopic_contentChanged();
+    partial void Ontopic_resourceChanging(string value);
+    partial void Ontopic_resourceChanged();
+    partial void Ondelete_flagChanging(System.Nullable<bool> value);
+    partial void Ondelete_flagChanged();
+    #endregion
+		
 		public topic_tbl()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_topic_id", DbType="NChar(50)")]
@@ -3207,7 +4331,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_id != value))
 				{
+					this.Ontopic_idChanging(value);
+					this.SendPropertyChanging();
 					this._topic_id = value;
+					this.SendPropertyChanged("topic_id");
+					this.Ontopic_idChanged();
 				}
 			}
 		}
@@ -3223,7 +4351,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_type != value))
 				{
+					this.Ontopic_typeChanging(value);
+					this.SendPropertyChanging();
 					this._topic_type = value;
+					this.SendPropertyChanged("topic_type");
+					this.Ontopic_typeChanged();
 				}
 			}
 		}
@@ -3239,7 +4371,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_title != value))
 				{
+					this.Ontopic_titleChanging(value);
+					this.SendPropertyChanging();
 					this._topic_title = value;
+					this.SendPropertyChanged("topic_title");
+					this.Ontopic_titleChanged();
 				}
 			}
 		}
@@ -3255,7 +4391,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_content != value))
 				{
+					this.Ontopic_contentChanging(value);
+					this.SendPropertyChanging();
 					this._topic_content = value;
+					this.SendPropertyChanged("topic_content");
+					this.Ontopic_contentChanged();
 				}
 			}
 		}
@@ -3271,7 +4411,11 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._topic_resource != value))
 				{
+					this.Ontopic_resourceChanging(value);
+					this.SendPropertyChanging();
 					this._topic_resource = value;
+					this.SendPropertyChanged("topic_resource");
+					this.Ontopic_resourceChanged();
 				}
 			}
 		}
@@ -3287,8 +4431,32 @@ namespace LearningEnglish.App_Data
 			{
 				if ((this._delete_flag != value))
 				{
+					this.Ondelete_flagChanging(value);
+					this.SendPropertyChanging();
 					this._delete_flag = value;
+					this.SendPropertyChanged("delete_flag");
+					this.Ondelete_flagChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3299,7 +4467,7 @@ namespace LearningEnglish.App_Data
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _answer_question_detail_id;
+		private int _id;
 		
 		private string _answer_question_id;
 		
@@ -3311,8 +4479,8 @@ namespace LearningEnglish.App_Data
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onanswer_question_detail_idChanging(int value);
-    partial void Onanswer_question_detail_idChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
     partial void Onanswer_question_idChanging(string value);
     partial void Onanswer_question_idChanged();
     partial void Onanswer_idChanging(string value);
@@ -3326,22 +4494,22 @@ namespace LearningEnglish.App_Data
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_answer_question_detail_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int answer_question_detail_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._answer_question_detail_id;
+				return this._id;
 			}
 			set
 			{
-				if ((this._answer_question_detail_id != value))
+				if ((this._id != value))
 				{
-					this.Onanswer_question_detail_idChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._answer_question_detail_id = value;
-					this.SendPropertyChanged("answer_question_detail_id");
-					this.Onanswer_question_detail_idChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}

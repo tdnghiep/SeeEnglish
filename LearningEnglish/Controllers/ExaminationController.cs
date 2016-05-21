@@ -15,11 +15,11 @@ namespace LearningEnglish.Controllers
 {
     public class ExaminationController : ApiController
     {
-        public dynamic Get([FromUriAttribute] StaffParams staff_params)
+        public dynamic Get([FromUriAttribute] StaffParams staffParams)
         {
             ExaminationService examSv = new ExaminationService();
 
-            dynamic wrap = new System.Dynamic.ExpandoObject();
+            dynamic wrap;
             wrap = examSv.GetExaminationInfoByID("exam_001");
             return wrap;
         }
