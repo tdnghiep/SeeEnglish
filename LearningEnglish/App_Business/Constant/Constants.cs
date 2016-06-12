@@ -20,14 +20,18 @@ namespace LearningEnglish.Constant
             FAILED = 2,
             UNKNOW_ERROR =3
         }
+
+        public static string DateTimeFormat = "yyyyMMdd:HHmmss";
         #endregion
     }
 
-    public static class MyMutex
+    public static class AddUserMutex
     {
         #region "Mutex"
         public static Mutex mutex_add_new_user = new Mutex();
 
         #endregion
     }
+
+   
 }

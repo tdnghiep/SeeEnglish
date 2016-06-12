@@ -195,7 +195,7 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
             bool ret = false;
             try
             {
-                MyMutex.mutex_add_new_user.WaitOne();
+                AddUserMutex.mutex_add_new_user.WaitOne();
                 // check user name existed
                 if(!IsExistUserName(user_info.user_name))
                 {
@@ -210,7 +210,7 @@ namespace LearningEnglish.DAL_Service.DAL_UserService
             }
             finally
             {
-                MyMutex.mutex_add_new_user.ReleaseMutex();
+                AddUserMutex.mutex_add_new_user.ReleaseMutex();
             }
             return ret;
         }

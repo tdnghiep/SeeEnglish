@@ -18,9 +18,9 @@ namespace LearningEnglish.Controllers
     {
         [HttpPost]
         [Route("api/user/create")]
-        public Constants.RESULT create([FromBody] UserModel user)
+        public LogginModel Create([FromBody] RegisterModel user)
         {
-            Constants.RESULT ret = Constants.RESULT.FAILED;
+            LogginModel ret = new LogginModel();
             if (user != null)
             {
                 // check exist user name
@@ -34,15 +34,48 @@ namespace LearningEnglish.Controllers
                     userTbl.email1 = user.email;
                     userTbl.user_name = user.email;
                     userTbl.password = user.password;
-                    string createdate = DateTime.Now.ToString("yyyyMMdd:HHmmss");
-                    userTbl.create_date = createdate;
-                    userTbl.update_date = createdate;
+                    string create_date = DateTime.Now.ToString(Constants.DateTimeFormat);
+                    userTbl.create_date = create_date;
+                    userTbl.update_date = create_date;
+                    userTbl.delete_flag = false;
                     if (userSv.AddNewUser(userTbl))
                     {
-                        ret = Constants.RESULT.SUCCESS;
+                        ret.isLogged = true;
+                        ret.email = user.email;
+                        ret.username = user.email;
+                        ret.password = user.password;
+                        ret.firstName = user.firstName;
+                        ret.lastName = user.lastName;
                     }
                 }
             }
+            return ret;
+        }
+
+
+        [HttpPost]
+        [Route("api/user/login")]
+        public LogginModel Login([FromBody] UserModelBase user)
+        {
+            LogginModel ret = new LogginModel();
+            if (String.IsNullOrEmpty(user.username) || String.IsNullOrEmpty(user.password))
+            {
+                ret.hasError = true;
+                ret.errMsg = "Invalid user or password!";
+                return ret;
+            }
+
+            UserService service = new UserService();
+            if(service.CheckAccountValid(user.username,user.password))
+            {
+                ret.hasError = false;
+                ret.isLogged = true;
+                ret.email = user.email;
+                ret.firstName = user.firstName;
+                ret.lastName = user.lastName;
+                ret.username = user.username;
+            }
+
             return ret;
         }
     }
