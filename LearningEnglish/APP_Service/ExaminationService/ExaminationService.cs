@@ -44,6 +44,10 @@ namespace LearningEnglish.APP_Service.ExaminationService
             {
                 totalElement += listQuestion.Count;
             }
+            if (listTopic != null)
+            {
+                totalElement += listTopic.Count;
+            }
             object[] array = new object[totalElement];
             foreach(var part in listPart)
             {
