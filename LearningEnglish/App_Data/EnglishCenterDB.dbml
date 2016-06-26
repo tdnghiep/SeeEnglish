@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EnglishCenterDB" Class="EnglishCenterDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=THANHNGUYEN\SQLEXPRESS;Initial Catalog=EnglishCenterDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EnglishCenterDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-8B3RSCP;Initial Catalog=EnglishCenterDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EnglishCenterDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.answer_tbl" Member="answer_tbls">
     <Type Name="answer_tbl">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -102,10 +102,12 @@
     <Type Name="guest_tbl">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="full_name" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="phone_number" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="sent_files" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="examination_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="correct_answer_num" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.part_tbl" Member="part_tbls">
@@ -231,7 +233,6 @@
       <Column Name="examination_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="part_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
       <Column Name="question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="answer_question_id" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

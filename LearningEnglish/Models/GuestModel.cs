@@ -7,9 +7,12 @@ namespace LearningEnglish.Models
 {
     public class GuestModel
     {
-        public string fullname { get; set; }
-        public string email { get; set; }
-        public string phonenumber { get; set; }
-        public string notes { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Notes { get; set; }
+        public short Type { get; set; }
+        public int ExaminationId { get; set; }
+        public short CorrectAnswerNum { get; set; }
     }
 }

@@ -2218,9 +2218,13 @@ namespace LearningEnglish.App_Data
 		
 		private string _phone_number;
 		
-		private string _sent_files;
-		
 		private string _notes;
+		
+		private System.Nullable<short> _type;
+		
+		private System.Nullable<int> _examination_id;
+		
+		private System.Nullable<short> _correct_answer_num;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2234,10 +2238,14 @@ namespace LearningEnglish.App_Data
     partial void OnemailChanged();
     partial void Onphone_numberChanging(string value);
     partial void Onphone_numberChanged();
-    partial void Onsent_filesChanging(string value);
-    partial void Onsent_filesChanged();
     partial void OnnotesChanging(string value);
     partial void OnnotesChanged();
+    partial void OntypeChanging(System.Nullable<short> value);
+    partial void OntypeChanged();
+    partial void Onexamination_idChanging(System.Nullable<int> value);
+    partial void Onexamination_idChanged();
+    partial void Oncorrect_answer_numChanging(System.Nullable<short> value);
+    partial void Oncorrect_answer_numChanged();
     #endregion
 		
 		public guest_tbl()
@@ -2285,7 +2293,7 @@ namespace LearningEnglish.App_Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
 		public string email
 		{
 			get
@@ -2325,26 +2333,6 @@ namespace LearningEnglish.App_Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sent_files", DbType="NVarChar(MAX)")]
-		public string sent_files
-		{
-			get
-			{
-				return this._sent_files;
-			}
-			set
-			{
-				if ((this._sent_files != value))
-				{
-					this.Onsent_filesChanging(value);
-					this.SendPropertyChanging();
-					this._sent_files = value;
-					this.SendPropertyChanged("sent_files");
-					this.Onsent_filesChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notes", DbType="NVarChar(MAX)")]
 		public string notes
 		{
@@ -2361,6 +2349,66 @@ namespace LearningEnglish.App_Data
 					this._notes = value;
 					this.SendPropertyChanged("notes");
 					this.OnnotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="SmallInt")]
+		public System.Nullable<short> type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_examination_id", DbType="Int")]
+		public System.Nullable<int> examination_id
+		{
+			get
+			{
+				return this._examination_id;
+			}
+			set
+			{
+				if ((this._examination_id != value))
+				{
+					this.Onexamination_idChanging(value);
+					this.SendPropertyChanging();
+					this._examination_id = value;
+					this.SendPropertyChanged("examination_id");
+					this.Onexamination_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_correct_answer_num", DbType="SmallInt")]
+		public System.Nullable<short> correct_answer_num
+		{
+			get
+			{
+				return this._correct_answer_num;
+			}
+			set
+			{
+				if ((this._correct_answer_num != value))
+				{
+					this.Oncorrect_answer_numChanging(value);
+					this.SendPropertyChanging();
+					this._correct_answer_num = value;
+					this.SendPropertyChanged("correct_answer_num");
+					this.Oncorrect_answer_numChanged();
 				}
 			}
 		}
@@ -4611,8 +4659,6 @@ namespace LearningEnglish.App_Data
 		
 		private string _question_id;
 		
-		private string _answer_question_id;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4627,8 +4673,6 @@ namespace LearningEnglish.App_Data
     partial void Onpart_idChanged();
     partial void Onquestion_idChanging(string value);
     partial void Onquestion_idChanged();
-    partial void Onanswer_question_idChanging(string value);
-    partial void Onanswer_question_idChanged();
     #endregion
 		
 		public user_answer_question_tbl()
@@ -4732,26 +4776,6 @@ namespace LearningEnglish.App_Data
 					this._question_id = value;
 					this.SendPropertyChanged("question_id");
 					this.Onquestion_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_answer_question_id", DbType="NChar(50)")]
-		public string answer_question_id
-		{
-			get
-			{
-				return this._answer_question_id;
-			}
-			set
-			{
-				if ((this._answer_question_id != value))
-				{
-					this.Onanswer_question_idChanging(value);
-					this.SendPropertyChanging();
-					this._answer_question_id = value;
-					this.SendPropertyChanged("answer_question_id");
-					this.Onanswer_question_idChanged();
 				}
 			}
 		}

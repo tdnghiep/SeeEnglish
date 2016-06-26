@@ -21,13 +21,14 @@ namespace LearningEnglish.APP_Service.GuestService
         {
             guest_tbl newGuest = new guest_tbl()
             {
-                email = guest.email,
-                full_name = guest.fullname,
-                phone_number = guest.phonenumber,
-                notes = guest.notes,
-                sent_files = ""
+                email = guest.Email,
+                full_name = guest.FullName,
+                phone_number = guest.PhoneNumber,
+                notes = guest.Notes,
+                type = guest.Type,
+                correct_answer_num = guest.CorrectAnswerNum,
+                examination_id = guest.ExaminationId
             };
-            
             return dalGuestService.CreateGuestInfo(newGuest);
         }
 
